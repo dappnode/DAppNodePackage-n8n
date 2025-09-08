@@ -29,14 +29,8 @@ jobs:
     if: github.event_name == 'push' || github.event_name == 'repository_dispatch' || github.event_name == 'workflow_dispatch'
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-      - name: Publish patch
-        run: npx @dappnode/dappnodesdk publish patch
+      - name: Publish
+        run: npx @dappnode/dappnodesdk publish patch --dappnode_team_preset --all-variants
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DEVELOPER_ADDRESS: "0xf35960302a07022aba880dffaec2fdd64d5bf1c1"
-          # Optional: uncomment if you want Pinata pinning during publish
-          # PINATA_API_KEY: ${{ secrets.PINATA_API_KEY }}
-          # PINATA_SECRET_API_KEY: ${{ secrets.PINATA_SECRET_API_KEY }}
