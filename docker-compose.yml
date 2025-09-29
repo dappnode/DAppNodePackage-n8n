@@ -1,25 +1,22 @@
 version: "3.5"
-
 services:
   n8n:
     build:
       context: .
       dockerfile: Dockerfile
       args:
-        UPSTREAM_VERSION: "1.109.2"
-    image: "n8n.public.dappnode.eth:0.1.0"
+        UPSTREAM_VERSION: n8n@1.114.0
+    image: n8n.public.dappnode.eth:0.1.0
     restart: unless-stopped
     environment:
-      # Internal-only defaults (no TLS)
-      N8N_HOST: "n8n.public.dappnode"
+      N8N_HOST: n8n.public.dappnode
       N8N_PORT: "5678"
-      N8N_PROTOCOL: "http"
-      N8N_EDITOR_BASE_URL: "http://n8n.public.dappnode:5678/"
+      N8N_PROTOCOL: http
+      N8N_EDITOR_BASE_URL: http://n8n.public.dappnode:5678/
       N8N_BASIC_AUTH_ACTIVE: "false"
       N8N_SECURE_COOKIE: "false"
-      NODE_ENV: "production"
+      NODE_ENV: production
     volumes:
       - n8n-data:/home/node/.n8n
-
 volumes:
   n8n-data: {}
