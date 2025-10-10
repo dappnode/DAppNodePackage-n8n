@@ -7,16 +7,13 @@
   "type": "service",
   "author": "dappnode",
   "mainService": "n8n",
-  "architectures": [
-    "linux/amd64",
-    "linux/arm64"
-  ],
+  "architectures": ["linux/amd64", "linux/arm64"],
   "links": {
     "ui": "http://n8n.public.dappnode:5678/",
     "homepage": "https://n8n.io"
   },
   "upstreamRepo": "n8n-io/n8n",
-  "upstreamVersion": "1.109.2",
+  "upstreamVersion": "n8n@1.115.2",
   "upstreamArg": "UPSTREAM_VERSION",
   "exposable": [
     {
