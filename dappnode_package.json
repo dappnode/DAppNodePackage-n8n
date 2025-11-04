@@ -1,5 +1,5 @@
 {
-  "name": "n8n.public.dappnode.eth",
+  "name": "n8n.dpn.dappnode.eth",
   "version": "0.1.0",
   "license": "GPL-3.0",
   "shortDescription": "Workflow automation for your home server",
@@ -9,7 +9,7 @@
   "mainService": "n8n",
   "architectures": ["linux/amd64", "linux/arm64"],
   "links": {
-    "ui": "http://n8n.public.dappnode:5678/",
+    "ui": "http://n8n.dappnode:5678/",
     "homepage": "https://n8n.io"
   },
   "upstreamRepo": "n8n-io/n8n",
