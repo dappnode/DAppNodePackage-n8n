@@ -6,7 +6,7 @@ services:
       dockerfile: Dockerfile
       args:
         UPSTREAM_VERSION: 1.119.0
-    image: n8n.dpn.dappnode.eth:0.1.0
+    image: n8n.dnp.dappnode.eth:0.1.0
     restart: unless-stopped
     environment:
       N8N_HOST: n8n.dappnode
