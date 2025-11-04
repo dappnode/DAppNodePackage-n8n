@@ -23,5 +23,6 @@
       "port": 5678,
       "fromSubdomain": "webhooks"
     }
-  ]
+  ],
+  "categories": ["AI"]
 }
