@@ -1,22 +1,19 @@
 {
   "name": "n8n.dnp.dappnode.eth",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "GPL-3.0",
   "shortDescription": "Workflow automation for your home server",
   "description": "Self-hosted n8n on Dappnode. Build with the precision of code or the speed of drag-n-drop. n8n gives you more freedom to implement multi-step AI agents and integrate apps than any other tool, all private from your Dappnode",
   "type": "service",
   "author": "dappnode",
   "mainService": "n8n",
-  "architectures": [
-    "linux/amd64",
-    "linux/arm64"
-  ],
+  "architectures": ["linux/amd64", "linux/arm64"],
   "links": {
     "ui": "http://n8n.dappnode:5678/",
     "homepage": "https://n8n.io"
   },
   "upstreamRepo": "n8n-io/n8n",
-  "upstreamVersion": "1.119.0",
+  "upstreamVersion": "n8n@2.0.0-rc.0",
   "upstreamArg": "UPSTREAM_VERSION",
   "exposable": [
     {
@@ -27,7 +24,5 @@
       "fromSubdomain": "webhooks"
     }
   ],
-  "categories": [
-    "AI"
-  ]
+  "categories": ["AI"]
 }
