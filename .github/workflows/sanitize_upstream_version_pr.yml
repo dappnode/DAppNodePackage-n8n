@@ -1,0 +1,57 @@
+# This workflow sanitizes upstream n8n version strings in bump PRs.
+#
+# Problem: n8n releases tags use the form `n8n@2.x.y`, but Docker image tags
+# cannot contain `@`. When the dappnodesdk opens a bump PR it sets
+# UPSTREAM_VERSION to e.g. `n8n@2.11.0`, which causes `FROM n8nio/n8n:n8n@2.11.0`
+# to fail at build time.
+#
+# Solution: On every bump PR (opened / updated by github-actions[bot] with a
+# title starting with "bump n8n-io/n8n to"), check out the PR branch, strip the
+# leading `n8n@` prefix from the version fields in dappnode_package.json and
+# docker-compose.yml, and push the fix back to the same branch so the PR
+# remains manually mergeable.
+
+name: Sanitize upstream version in bump PRs
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: write
+
+jobs:
+  sanitize-version:
+    # Only run for upstream bump PRs opened/updated by the GitHub Actions bot.
+    if: |
+      github.actor == 'github-actions[bot]' &&
+      startsWith(github.event.pull_request.title, 'bump n8n-io/n8n to ')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout PR branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          # Use a token with write access so we can push back to the PR branch.
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Strip n8n@ prefix from version fields
+        run: |
+          # dappnode_package.json – strip n8n@ prefix from upstreamVersion value
+          sed -i 's/"upstreamVersion": "n8n@/"upstreamVersion": "/g' dappnode_package.json
+
+          # docker-compose.yml – strip n8n@ prefix from UPSTREAM_VERSION build arg
+          sed -i 's/UPSTREAM_VERSION: n8n@/UPSTREAM_VERSION: /g' docker-compose.yml
+
+      - name: Commit and push if anything changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          if git diff --quiet; then
+            echo "No version sanitization needed – nothing to commit."
+          else
+            git add dappnode_package.json docker-compose.yml
+            git commit -m "chore: strip n8n@ prefix from UPSTREAM_VERSION"
+            git push
+          fi
