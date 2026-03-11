@@ -12,7 +12,7 @@
     "homepage": "https://n8n.io"
   },
   "upstreamRepo": "n8n-io/n8n",
-  "upstreamVersion": "n8n@2.12.0",
+  "upstreamVersion": "n8n@2.11.2",
   "upstreamArg": "UPSTREAM_VERSION",
   "exposable": [
     {
