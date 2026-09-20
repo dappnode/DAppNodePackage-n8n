@@ -16,6 +16,7 @@ services:
       WEBHOOK_URL: https://n8n.dappnode:5678/
       N8N_SECURE_COOKIE: "false"
       NODE_ENV: production
+      NODE_FUNCTION_ALLOW_BUILTIN: "http,https"
     volumes:
       - n8n-data:/home/node/.n8n
 volumes:
