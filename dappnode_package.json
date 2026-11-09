@@ -25,8 +25,12 @@
   "name": "n8n.dnp.dappnode.eth",
   "shortDescription": "Workflow automation for your home server",
   "type": "service",
-  "upstreamArg": "UPSTREAM_VERSION",
-  "upstreamRepo": "n8n-io/n8n",
-  "upstreamVersion": "n8n@2.46.5",
+  "upstream": [
+    {
+      "repo": "n8n-io/n8n",
+      "version": "n8n@2.46.5",
+      "arg": "UPSTREAM_VERSION"
+    }
+  ],
   "version": "0.1.5"
 }
