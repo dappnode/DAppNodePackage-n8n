@@ -27,9 +27,9 @@
   "type": "service",
   "upstream": [
     {
+      "arg": "UPSTREAM_VERSION",
       "repo": "n8n-io/n8n",
-      "version": "n8n@2.46.5",
-      "arg": "UPSTREAM_VERSION"
+      "version": "n8n@2.47.7"
     }
   ],
   "version": "0.1.5"
