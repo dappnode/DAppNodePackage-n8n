@@ -4,6 +4,18 @@
     "linux/arm64"
   ],
   "author": "dappnode",
+  "backup": [
+    {
+      "name": "database",
+      "path": "/home/node/.n8n/backup-database.sqlite",
+      "service": "n8n"
+    },
+    {
+      "name": "encryption-key",
+      "path": "/home/node/.n8n/backup-config.json",
+      "service": "n8n"
+    }
+  ],
   "categories": [
     "AI"
   ],
