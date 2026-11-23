@@ -7,12 +7,17 @@
   "backup": [
     {
       "name": "database",
-      "path": "/home/node/.n8n/backup-database.sqlite",
+      "path": "/home/node/.n8n/database.sqlite",
+      "service": "n8n"
+    },
+    {
+      "name": "database-wal",
+      "path": "/home/node/.n8n/database.sqlite-wal",
       "service": "n8n"
     },
     {
       "name": "encryption-key",
-      "path": "/home/node/.n8n/backup-config.json",
+      "path": "/home/node/.n8n/config",
       "service": "n8n"
     }
   ],
